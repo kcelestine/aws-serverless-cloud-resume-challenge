@@ -5,7 +5,7 @@ Create a new repo in github, clone locally. Download ths repo onto your machine,
 
 ## Step 1:
 The first failure is at the Configure AWS Credentials Step, our current role, does not have permissions to run aws commands in our account. You will need to create a role in your AWS account to be used.
-![](https://i.ibb.co/gPLPVZ5/1.png)
+![](https://i.ibb.co/ZLMGQT3/image.png)
 
 Create a new role for this repository to have access to your AWS resources.
 We created crc-serverless-role with the following trust policy corrections.
