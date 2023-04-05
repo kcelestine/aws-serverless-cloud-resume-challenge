@@ -3,7 +3,7 @@ terraform {
     organization = "_cloudcte"
 
     workspaces {
-      name = "api"
+      name = "crc-aws-serverless"
     }
   }
 }
