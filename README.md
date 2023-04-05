@@ -1,6 +1,10 @@
 # aws-serverless-cloud-resume-challenge
 
+## Setup
+Create a new repo in github, clone locally. Download ths repo onto your machine, extract contents and paste them in your local github repo. Push all changes to the main branch of your repo and go through the errors one by one.
+
 ## Step 1:
+![picture alt](https://ibb.co/QC3Cdv2)  
 > Create a new role for this repository to have access to your AWS resources.
 > We created crc-serverless-role with the following trust policy corrections:
 > Add your repo into the StringLike condition like so: 
