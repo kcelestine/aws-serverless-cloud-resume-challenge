@@ -18,6 +18,10 @@ resource "aws_s3_bucket" "bucket-1" {
   force_destroy = true
 }
 
+output "s3_website_endpoint" {
+  value = aws_s3_bucket.bucket-1.website_endpoint
+}
+
 data "aws_s3_bucket" "selected-bucket" {
   bucket = aws_s3_bucket.bucket-1.bucket
 }
