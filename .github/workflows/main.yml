@@ -18,7 +18,7 @@ defaults:
     working-directory: terraform
 
 jobs:
-  deploy_production:
+  deploy_infra:
     environment: production
     name: 'Deploy infrastructure'
     runs-on: ubuntu-latest
@@ -59,6 +59,7 @@ jobs:
   deploy_code:
     environment: production
     name: 'Deploy code'
+    needs: deploy_infra
     runs-on: ubuntu-latest
     steps:      
     - name: Sync with s3
