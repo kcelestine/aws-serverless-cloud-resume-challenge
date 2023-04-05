@@ -81,6 +81,7 @@ This error is because github actions is trying to login to Terraform Cloud witho
 <a href="https://ibb.co/RcTnhnb"><img src="https://i.ibb.co/TtMXKX2/image.png" alt="image" border="0"></a>
 
 In this step we are also going to create an api driven workspace in terraform cloud and ensure we are naming it correctly in the main.tf file.
+<a href="https://ibb.co/4jqX0d0"><img src="https://i.ibb.co/cNBZsLs/image.png" alt="image" border="0"></a>
 
 ## Step 4
 <a href="https://ibb.co/4jqTfS3"><img src="https://i.ibb.co/RCF0S6d/image.png" alt="image" border="0"></a>
