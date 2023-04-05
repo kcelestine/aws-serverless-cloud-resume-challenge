@@ -40,3 +40,38 @@ Add your repo into the StringLike condition like so:
 
 Now we are failing because there are no terraform files in the working directory. This is actually an error with how I copied all three repos into one. The ui, the api and the terraform repos. Now that all the code exsists in one repo, we have to make changes in the github workflow to allow the runner to be in the correct directory. This error will likely not show up for you.
 
+````
+permissions:
+  id-token: write
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+    working-directory: .
+
+jobs:
+
+  deploy_production:
+  ````
+  
+  ````
+permissions:
+  id-token: write
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+    working-directory: terraform
+
+jobs:
+
+  deploy_production:
+  ````
+  
+## Step 3
+<a href="https://ibb.co/1Z4pBtY"><img src="https://i.ibb.co/v1Mrf6C/image.png" alt="image" border="0"></a>
+
+![](https://i.ibb.co/v1Mrf6C/image.png)
+![](https://i.ibb.co/b260Tk0/image.png)
