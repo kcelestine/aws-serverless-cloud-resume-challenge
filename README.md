@@ -80,6 +80,8 @@ This error is because github actions is trying to login to Terraform Cloud witho
 
 <a href="https://ibb.co/RcTnhnb"><img src="https://i.ibb.co/TtMXKX2/image.png" alt="image" border="0"></a>
 
+In this step we are also going to create an api driven workspace in terraform cloud and ensure we are naming it correctly in the main.tf file.
+
 ## Step 4
 <a href="https://ibb.co/4jqTfS3"><img src="https://i.ibb.co/RCF0S6d/image.png" alt="image" border="0"></a>
 
@@ -87,7 +89,7 @@ This error is because github actions has detected terraforms environment variabl
 
 <a href="https://ibb.co/kgzPNFQ"><img src="https://i.ibb.co/QFhxyGr/image.png" alt="image" border="0"></a>
 
-For the role variables you will have to create another role in AWS specifically for Terraform Cloud. 
+Ensure all the variables are in the terraform category. For the role variables you will have to create another role in AWS specifically for Terraform Cloud. 
 
 Follow: https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services
 
@@ -118,3 +120,5 @@ And the following trust relationship:
 ````
 
 NOTE: you should not have to edit the trust policy after adding the admin policy to the role. This is shown here for completeness.
+
+## Step 5
