@@ -30,7 +30,7 @@ jobs:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        role-to-assume: arn:aws:iam::198516399747:role/deploy-resume-infra-to-aws
+        role-to-assume: arn:aws:iam::198516399747:role/crc-serverless-role
         role-session-name: rolesessionKhadijah
         aws-region: us-east-1
 
