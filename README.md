@@ -37,5 +37,7 @@ Add your repo into the StringLike condition like so:
 
 ## Step 2:
 ![](https://i.ibb.co/b260Tk0/image.png)
+![](https://i.ibb.co/b260Tk0/image.png)
+![](https://i.ibb.co/gPLPVZ5/1.png)
 Now we are failing because there are no terraform files in the working directory. This is actually an error with how I copied all three repos into one. The ui, the api and the terraform repos. Now that all the code exsists in one repo, we have to make changes in the github workflow to allow the runner to be in the correct directory. This error will likely not show up for you.
 
