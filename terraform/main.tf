@@ -19,6 +19,7 @@ resource "aws_s3_bucket" "bucket-1" {
 
 data "aws_s3_bucket" "selected-bucket" {
   bucket = aws_s3_bucket.bucket-1.bucket
+  force_destroy = true
 }
 
 resource "aws_s3_bucket_acl" "bucket-acl" {
