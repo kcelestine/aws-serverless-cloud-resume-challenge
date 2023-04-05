@@ -5,6 +5,12 @@ Create a new repo in github, clone locally. Download ths repo onto your machine,
 
 ## Step 1:
 !(https://i.ibb.co/gPLPVZ5/1.png)
+Markup : ![picture alt](http://via.placeholder.com/200x150 "Title is optional")
+Markup : ![picture alt](https://i.ibb.co/gPLPVZ5/1.png)
+![picture alt](https://i.ibb.co/gPLPVZ5/1.png)
+![](https://i.ibb.co/gPLPVZ5/1.png)
+
+
 > Create a new role for this repository to have access to your AWS resources.
 > We created crc-serverless-role with the following trust policy corrections:
 > Add your repo into the StringLike condition like so: 
