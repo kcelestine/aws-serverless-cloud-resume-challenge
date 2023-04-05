@@ -1,0 +1,30 @@
+name: Deploy to Amazon S3
+
+on:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        role-to-assume: arn:aws:iam::198516399747:role/gh-actions-role
+        role-session-name: rolesessionKhadijah
+        aws-region: us-east-1
+
+    - name: Sync with s3
+      run: aws s3 sync . s3://www.resume2.khadijahcamille.com
+
