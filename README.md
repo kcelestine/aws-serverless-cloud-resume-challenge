@@ -40,6 +40,8 @@ Add your repo into the StringLike condition like so:
 
 Now we are failing because there are no terraform files in the working directory. This is actually an error with how I copied all three repos into one. The ui, the api and the terraform repos. Now that all the code exsists in one repo, we have to make changes in the github workflow to allow the runner to be in the correct directory. This error will likely not show up for you.
 
+from this:
+
 ````
 permissions:
   id-token: write
@@ -53,9 +55,11 @@ defaults:
 jobs:
 
   deploy_production:
-  ````
-  
-  ````
+````
+
+to this:
+
+````
 permissions:
   id-token: write
   contents: read
@@ -68,10 +72,49 @@ defaults:
 jobs:
 
   deploy_production:
-  ````
+````
   
 ## Step 3
-<a href="https://ibb.co/1Z4pBtY"><img src="https://i.ibb.co/v1Mrf6C/image.png" alt="image" border="0"></a>
-
 ![](https://i.ibb.co/v1Mrf6C/image.png)
-![](https://i.ibb.co/b260Tk0/image.png)
+This error is because github actions is trying to login to Terraform Cloud without credentials. Create a token, TF_API_TOKEN, in terraform cloud and add the token to your github secrets via https://developer.hashicorp.com/terraform/tutorials/automation/github-actions
+
+<a href="https://ibb.co/RcTnhnb"><img src="https://i.ibb.co/TtMXKX2/image.png" alt="image" border="0"></a>
+
+## Step 4
+<a href="https://ibb.co/4jqTfS3"><img src="https://i.ibb.co/RCF0S6d/image.png" alt="image" border="0"></a>
+
+This error is because github actions has detected terraforms environment variables. However, they are not set. You will need to set the following variables in TerraformCloud:
+
+<a href="https://ibb.co/kgzPNFQ"><img src="https://i.ibb.co/QFhxyGr/image.png" alt="image" border="0"></a>
+
+For the role variables you will have to create another role in AWS specifically for Terraform Cloud. 
+
+Follow: https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services
+
+Admin Policy:
+
+<a href="https://ibb.co/wwG2GYR"><img src="https://i.ibb.co/KL484mX/image.png" alt="image" border="0"></a>
+
+And the following trust relationship:
+
+````
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Federated": "arn:aws:iam::YOURACCOUNT:oidc-provider/app.terraform.io"
+            },
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+                "StringEquals": {
+                    "app.terraform.io:aud": "aws.workload.identity"
+                }
+            }
+        }
+    ]
+}
+````
+
+NOTE: you should not have to edit the trust policy after adding the admin policy to the role. This is shown here for completeness.
