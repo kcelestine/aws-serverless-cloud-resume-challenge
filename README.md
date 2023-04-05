@@ -1,9 +1,9 @@
 # aws-serverless-cloud-resume-challenge
 
 ## Step 1:
-Create a new role for this repository to have access to your AWS resources.
-We created crc-serverless-role with the following trust policy corrections:
-Add your repo into the StringLike condition like so: 
+> Create a new role for this repository to have access to your AWS resources.
+> We created crc-serverless-role with the following trust policy corrections:
+> Add your repo into the StringLike condition like so: 
 
 ````
 {
@@ -26,5 +26,7 @@ Add your repo into the StringLike condition like so:
 }
 ````
 
-arn:aws:iam::198516399747:role/crc-serverless-role
-Now copy this arn into the github workflow and wait for the next error.
+> arn:aws:iam::198516399747:role/crc-serverless-role
+> Now copy this arn into the github workflow and wait for the next error.
+
+## Step 2:
