@@ -61,6 +61,15 @@ data "aws_iam_policy_document" "allow_access_from_another_account" {
   }
 }
 
+data "aws_iam_policy_document" "dynamodb_access" {
+  statement {
+    actions   = ["dynamodb:GetItem","dynamodb:UpdateItem"]
+    resources = ["arn:aws:dynamodb:*:198516399747:table/*"]
+    effect = "Allow"
+  }
+}
+
+
 data "aws_iam_policy_document" "assume_role" {
   statement {
     effect = "Allow"
