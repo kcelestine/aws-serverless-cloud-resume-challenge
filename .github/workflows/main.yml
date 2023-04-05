@@ -1,0 +1,57 @@
+name: Cloud Resume Challenge
+
+on:
+  push:
+    branches:
+      - 'main'
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+    working-directory: .
+
+jobs:
+
+  deploy_production:
+    environment: production
+    name: 'Deploy to production'
+    runs-on: ubuntu-latest
+    
+    steps:
+    
+    - uses: actions/checkout@v2
+      name: 'Checkout repository'
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        role-to-assume: arn:aws:iam::198516399747:role/deploy-resume-infra-to-aws
+        role-session-name: rolesessionKhadijah
+        aws-region: us-east-1
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+    - name: Terraform Init
+      run: terraform init
+
+    # Checks that all Terraform configuration files adhere to a canonical format
+#    - name: Terraform Format
+#      run: terraform fmt -check
+
+    # Generates an execution plan for Terraform
+#    - name: Terraform Refresh
+#      run: terraform refresh -input=false
+      
+    - name: Terraform Plan
+      run: terraform plan -input=false
+    
+    - name: Terraform Apply
+      run: terraform apply -auto-approve
