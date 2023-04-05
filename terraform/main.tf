@@ -91,7 +91,7 @@ resource "aws_lambda_function" "lambda" {
   filename      = "lambda_function_payload.zip"
   function_name = "lambda_function_name"
   role          = aws_iam_role.iam_for_lambda.arn
-  handler       = "default-lambda.lambda_handler"
+  handler       = "api/default-lambda.lambda_handler"
 
   runtime = "python3.9"
 
